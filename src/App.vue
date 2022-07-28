@@ -27,26 +27,45 @@
             </v-list>
         </v-navigation-drawer>
 
-        <v-app-bar app>
+        <v-app-bar app color="#fcb69f" dark src="./assets/bg.jpg" prominent>
+            <template v-slot:img="{ props }">
+                <v-img v-bind="props" gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"></v-img>
+            </template>
+
             <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-            <v-toolbar-title>Application</v-toolbar-title>
+            <v-app-bar-title>Title</v-app-bar-title>
+
+            <v-spacer></v-spacer>
+
+            <v-btn icon>
+                <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+
+            <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+            </v-btn>
+
+            <v-btn icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
         </v-app-bar>
 
         <v-main>
-            <router-view></router-view> <!--Tudo que vier do componente redirecionado pelo rota, será carregado aqui  -->
+            <router-view></router-view>
+            <!--Tudo que vier do componente redirecionado pelo rota, será carregado aqui  -->
         </v-main>
     </v-app>
 </template>
 
 <script>
 export default {
-    data: () => ({ 
+    data: () => ({
         drawer: null,
-         items: [
-          { title: 'Tarefas', icon: 'mdi-view-dashboard', to:'/'},      
-          { title: 'Sobre', icon: 'mdi-help-box', to:'/sobre'},
-        ],        
+        items: [
+            { title: 'Tarefas', icon: 'mdi-view-dashboard', to: '/' },
+            { title: 'Sobre', icon: 'mdi-help-box', to: '/sobre' },
+        ],
     }),
 }
 </script>
