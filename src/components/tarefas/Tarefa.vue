@@ -7,7 +7,7 @@
             </v-list-item-action>
 
             <v-list-item-content>
-                <v-list-item-title>Notifications</v-list-item-title>
+                <v-list-item-title> {{tarefa.titulo}} </v-list-item-title>
             </v-list-item-content>
         </template>
     </v-list-item>
@@ -17,7 +17,7 @@
 <script>
 
 export default {
-
+    props: ['tarefa'] //recebe o parâmetro tarefa de TarefasVue.vue
 }
 </script>
 
