@@ -22,8 +22,10 @@ export default new Vuex.Store({
                     concluido: false
                 })               
             }
+        },
+        removeTarefa(state, id) {
+            state.tarefas = state.tarefas.filter(tarefa => tarefa.id !== id); //filtra todas as tarefas com id diferente do passado como parâmetro e popula novamente o vetor. OBS: poderia ser feito de outra forma!
         }
-
     },
     actions: {
     },
