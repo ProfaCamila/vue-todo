@@ -1,14 +1,14 @@
 <template>
     <div>
 
-        <v-col cols="12" sm="6">
+        <v-col cols="12">
             <v-text-field v-model="campoInput" label="Insira uma tarefa" outlined clearable @keyup.enter="addTarefa"></v-text-field>
         </v-col>
 
         <v-list flat subheader>
 
             <v-list-item-group multiple active-class="">
-                <div v-for="tarefa, index in tarefas" :key="index">
+                <div v-for="tarefa, index in $store.state.tarefas" :key="index">
                     <!-- tarefas referencia o objeto tarefas criado em data -->
                     <Tarefa :tarefa="tarefa"></Tarefa>
                     <!--Terceiro passo para utilizar um componente (Utilizar a sua TAG no html). Tarefa é passada por parâmetro para o componente Tarefa-->
@@ -30,23 +30,14 @@ export default {
     },
     data() { //aqui devem ser declarados todos os dados manipulados na tela
         return {
-            campoInput: null,
-            tarefas: [
-                { titulo: "Ir ao mercado", concluido: false }, //essa informação será mandada para o componente Tarefa
-                { titulo: "Estudar", concluido: true },
-                { titulo: "Lavar a louça", concluido: false }
-            ]
+            campoInput: null,           
         }
     },
     methods: { //aqui devem ser criados todos os métodos 
         addTarefa(){
-           if (this.campoInput) {
-            this.tarefas.push({
-                titulo: this.campoInput,
-                concluido: false
-            })
+            this.$store.commit('addTarefa', this.campoInput) //chamando a mutation em store/index.js
             this.campoInput=null;
-           }
+           
         }
     }
 }
